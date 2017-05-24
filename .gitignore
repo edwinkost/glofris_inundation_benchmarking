@@ -1,3 +1,6 @@
+# directories/folders to be ignored
+source_from_hessel/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
