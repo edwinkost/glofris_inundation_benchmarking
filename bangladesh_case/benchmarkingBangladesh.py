@@ -214,7 +214,7 @@ urban_fn      = mask_fn # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
 
-hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn = bench_fn, model_fn = model_fn, bench_thres = 0., model_thres = 0.1, mask_fn = mask_fn, urban_fn = urban_fn, masking=True)
+hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn = bench_fn, model_fn = model_fn, bench_thres = 0., model_thres = 0.0, mask_fn = mask_fn, urban_fn = urban_fn, masking=True)
 # def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
 
 
@@ -256,15 +256,15 @@ plt.savefig('Bangladesh.png', dpi=300, bbox_inches='tight')
 
 # In[23]:
 
-x, y, model, fill_model = gis.gdal_readmap('temp2.tif', 'GTiff')
-model = np.ma.masked_where(np.logical_or(model==fill_model, model==0), model)
-plt.imshow(model)
-plt.colorbar()
+#~ x, y, model, fill_model = gis.gdal_readmap('temp2.tif', 'GTiff')
+#~ model = np.ma.masked_where(np.logical_or(model==fill_model, model==0), model)
+#~ plt.imshow(model)
+#~ plt.colorbar()
 
 
 # In[20]:
 
-plt.colorbar()
+#~ plt.colorbar()
 
 
 # In[ ]:
