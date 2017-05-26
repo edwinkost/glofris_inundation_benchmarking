@@ -251,7 +251,7 @@ plt.savefig('Bangladesh.png', dpi=300, bbox_inches='tight')
 
 # In[64]:
 
-plt.imshow(cont_arr_mask)
+#~ plt.imshow(cont_arr_mask)
 
 
 # In[23]:
