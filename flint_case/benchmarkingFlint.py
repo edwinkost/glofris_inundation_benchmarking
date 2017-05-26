@@ -196,7 +196,7 @@ bench_fn = "input_data/flint_1in100.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\pa
 mask_fn  = "input_data/mask_flint.tif"   # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\mask_flint.tif'
 
 # The following is not used:
-model_warp_fn = None r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
+model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
 
 hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.25, 0., mask_fn, title, masking = True)
