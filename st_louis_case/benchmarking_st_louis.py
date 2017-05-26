@@ -157,23 +157,23 @@ def plot_contingency(x, y, contingency, title):
 
 def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
 
-    print('Warping {:s}'.format(mask_fn))
+    x, y, mask, fill_mask = gis.gdal_readmap(mask_fn, 'GTiff')
+
     print('Warping {:s}'.format(model_fn))
+    gis.gdal_warp(model_fn, mask_fn, 'model.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, model, fill_model = gis.gdal_readmap('model.tif', 'GTiff')
+
+    print('Warping {:s}'.format(bench_fn))
+    gis.gdal_warp(bench_fn, mask_fn, 'bench.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, bench, fill_bench = gis.gdal_readmap(bench.tif, 'GTiff')
+
     print('Warping {:s}'.format(urban_fn))
-    gis.gdal_warp(mask_fn , bench_fn, 'temp1.tif', gdal_interp=gdal.GRA_NearestNeighbour)
-    gis.gdal_warp(model_fn, bench_fn, 'temp2.tif', gdal_interp=gdal.GRA_NearestNeighbour)
-    gis.gdal_warp(urban_fn, bench_fn, 'temp3.tif', gdal_interp=gdal.GRA_NearestNeighbour)
-    x, y, bench, fill_bench = gis.gdal_readmap(bench_fn, 'GTiff')
-    x, y, model, fill_model = gis.gdal_readmap('temp2.tif', 'GTiff')
-    x, y, mask, fill_mask = gis.gdal_readmap('temp1.tif', 'GTiff')
-    x, y, urban, fill_urban = gis.gdal_readmap('temp3.tif', 'GTiff')
-#     else:
-#         bench = np.ma.masked_where(bench==fill_bench, bench)
-#         model = np.ma.masked_where(model==fill_model, model)
+    gis.gdal_warp(urban_fn, mask_fn, 'urban.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, urban, fill_urban = gis.gdal_readmap('urban.tif', 'GTiff')
 
     bench[bench==fill_bench] = 0.
-    #~ # added by Edwin: Ignore areas/cells belonging to permanent water bodies
-    #~ bench[model==fill_model] = 0.
+    # added by Edwin: Ignore areas/cells belonging to permanent water bodies
+    bench[model==fill_model] = 0.
 
     model[model==fill_model] = 0.
 
@@ -204,7 +204,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
 model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6_not_sure/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\stlouis_rp100.tif'
 
 # reference
-bench_fn = "input_data/inun_stlouis1.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\inun_stlouis2.tif'
+bench_fn = "input_data/inun_stlouis2.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\inun_stlouis2.tif'
 
 # mask/focus area
 mask_fn  = "input_data/mask_st_louis.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\mask_st_louis.tif'
