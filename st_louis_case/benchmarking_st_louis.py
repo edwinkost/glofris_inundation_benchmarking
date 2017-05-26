@@ -199,7 +199,7 @@ def contingency_based_on_mask(bench_fn, model_fn, bench_thres, model_thres, mask
 def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
 
     print('Warping {:s}'.format(bench_fn))
-    gis.gdal_warp(model_fn, bench_fn, 'bench.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    gis.gdal_warp(bench_fn, bench_fn, 'bench.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     x, y, bench, fill_bench = gis.gdal_readmap("bench.tif", 'GTiff')
 
     print('Warping {:s}'.format(model_fn))
