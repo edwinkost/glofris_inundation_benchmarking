@@ -156,13 +156,16 @@ def plot_contingency(x, y, contingency, title):
 # In[8]:
 
 def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
+
     print('Warping {:s}'.format(mask_fn))
+    gis.gdal_warp(mask_fn , bench_fn, 'temp2.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+
     print('Warping {:s}'.format(model_fn))
-    
-    gis.gdal_warp(bench_fn, model_fn, 'temp1.tif', gdal_interp=gdal.GRA_Average)
-    gis.gdal_warp(mask_fn, model_fn, 'temp2.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    gis.gdal_warp(model_fn, bench_fn, 'temp1.tif', gdal_interp=gdal.GRA_Average)
+
     print('Warping {:s}'.format(urban_fn))
-    gis.gdal_warp(urban_fn, model_fn, 'temp3.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    gis.gdal_warp(urban_fn, bench_fn, 'temp3.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+
     x, y, bench, fill_bench = gis.gdal_readmap('temp1.tif', 'GTiff')
     x, y, model, fill_model = gis.gdal_readmap(model_fn, 'GTiff')
     x, y, mask, fill_mask = gis.gdal_readmap('temp2.tif', 'GTiff')
@@ -236,6 +239,11 @@ print('Critical success index: {:f}'.format(csi))
 
 
 # In[ ]:
+
+#~ xmin, xmax, ymin, ymax = [850, 1450, 250, 700]
+#~ plot_contingency(x[xmin:xmax], y[ymin:ymax], np.flipud(cont_arr[ymin:ymax, xmin:xmax]), 'Bangladesh')
+#~ plt.savefig('Bangladesh.png', dpi=300, bbox_inches='tight')
+
 
 plot_contingency(x, y, np.flipud(cont_arr), 'St. Louis')
 plt.savefig('StLouis.png', dpi=300, bbox_inches='tight')

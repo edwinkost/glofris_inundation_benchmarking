@@ -203,7 +203,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
 # glofris downscaling output
 model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6_not_sure/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\GLOFRIS\inun_dynRout_RP_00100.tif'
 
-# reference dataset
+# reference
 bench_fn = "input_data/all_flood.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Bangladesh\all_flood.tif'
 
 # mask/focus area
