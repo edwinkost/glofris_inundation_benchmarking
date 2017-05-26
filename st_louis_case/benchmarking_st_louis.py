@@ -158,42 +158,38 @@ def plot_contingency(x, y, contingency, title):
 def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
 
     print('Warping {:s}'.format(mask_fn))
-    gis.gdal_warp(mask_fn , bench_fn, 'temp2.tif', gdal_interp=gdal.GRA_NearestNeighbour)
-
     print('Warping {:s}'.format(model_fn))
-    gis.gdal_warp(model_fn, bench_fn, 'temp1.tif', gdal_interp=gdal.GRA_Average)
-
     print('Warping {:s}'.format(urban_fn))
+    gis.gdal_warp(mask_fn, bench_fn, 'temp1.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    gis.gdal_warp(model_fn, bench_fn, 'temp2.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     gis.gdal_warp(urban_fn, bench_fn, 'temp3.tif', gdal_interp=gdal.GRA_NearestNeighbour)
-
-    x, y, bench, fill_bench = gis.gdal_readmap('temp1.tif', 'GTiff')
-    x, y, model, fill_model = gis.gdal_readmap(model_fn, 'GTiff')
-    x, y, mask, fill_mask = gis.gdal_readmap('temp2.tif', 'GTiff')
+    x, y, bench, fill_bench = gis.gdal_readmap(bench_fn, 'GTiff')
+    x, y, model, fill_model = gis.gdal_readmap('temp2.tif', 'GTiff')
+    x, y, mask, fill_mask = gis.gdal_readmap('temp1.tif', 'GTiff')
     x, y, urban, fill_urban = gis.gdal_readmap('temp3.tif', 'GTiff')
 #     else:
 #         bench = np.ma.masked_where(bench==fill_bench, bench)
 #         model = np.ma.masked_where(model==fill_model, model)
 
     bench[bench==fill_bench] = 0.
-    #~ # added by Edwin: Ignore areas/cells belonging to permanent water bodies
-    #~ bench[model==fill_model] = 0.
+    # added by Edwin: Ignore areas/cells belonging to permanent water bodies
+    bench[model==fill_model] = 0.
 
     model[model==fill_model] = 0.
 
-
     if masking:
-        bench = np.ma.masked_where(mask==255, bench)
-        model = np.ma.masked_where(mask==255, model)
+        bench = np.ma.masked_where(mask==0, bench)
+        model = np.ma.masked_where(mask==0, model)
     if urban_masking:
         bench = np.ma.masked_where(urban==0, bench)
         model = np.ma.masked_where(urban==0, model)
         
     flood1, flood2, cont_arr = contingency_map(bench, model, threshold1=bench_thres, threshold2=model_thres)
     if masking:
-        cont_arr = np.ma.masked_where(mask==255, cont_arr)
+        cont_arr = np.ma.masked_where(mask==0, cont_arr)
     if urban_masking:
         cont_arr = np.ma.masked_where(urban==0, cont_arr)
-    
+        
     hr = hit_rate(flood1, flood2)
     far = false_alarm_rate(flood1, flood2)
     csi = critical_success(flood1, flood2)
