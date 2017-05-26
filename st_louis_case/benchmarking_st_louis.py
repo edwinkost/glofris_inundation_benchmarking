@@ -165,7 +165,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
 
     print('Warping {:s}'.format(bench_fn))
     gis.gdal_warp(bench_fn, mask_fn, 'bench.tif', gdal_interp=gdal.GRA_NearestNeighbour)
-    x, y, bench, fill_bench = gis.gdal_readmap(bench.tif, 'GTiff')
+    x, y, bench, fill_bench = gis.gdal_readmap("bench.tif", 'GTiff')
 
     print('Warping {:s}'.format(urban_fn))
     gis.gdal_warp(urban_fn, mask_fn, 'urban.tif', gdal_interp=gdal.GRA_NearestNeighbour)
