@@ -228,19 +228,19 @@ plot_contingency(x, y, np.flipud(cont_arr), 'Flint')
 plt.savefig('Flint.png', dpi=300, bbox_inches='tight')
 
 
-# In[42]:
-
-y[1]+0.004166667
-
-
-# In[29]:
-
-x, y, data, fill = gis.gdal_readmap(model_fn, 'GTiff')
-data = data[:-1, :]
-plt.imshow(data)
-y = y[:-1]
-y.shape
-gis.gdal_writemap(model_fn + '.2', 'GTiff', x, y, data, fill)
+#~ # In[42]:
+#~ 
+#~ y[1]+0.004166667
+#~ 
+#~ 
+#~ # In[29]:
+#~ 
+#~ x, y, data, fill = gis.gdal_readmap(model_fn, 'GTiff')
+#~ data = data[:-1, :]
+#~ plt.imshow(data)
+#~ y = y[:-1]
+#~ y.shape
+#~ gis.gdal_writemap(model_fn + '.2', 'GTiff', x, y, data, fill)
 
 
 # In[23]:
