@@ -167,6 +167,8 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 #         bench = np.ma.masked_where(bench==fill_bench, bench)
 #         model = np.ma.masked_where(model==fill_model, model)
     bench[bench==fill_bench] = 0.
+    # added by Edwin: Ignore areas/cells belonging to permanent water bodies
+    bench[model==fill_model] = 0.
     model[model==fill_model] = 0.
     if masking:
         bench = np.ma.masked_where(mask==255, bench)
