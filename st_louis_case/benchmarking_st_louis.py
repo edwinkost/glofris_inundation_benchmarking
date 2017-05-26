@@ -178,8 +178,8 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
     model[model==fill_model] = 0.
 
     if masking:
-        bench = np.ma.masked_where(mask==0, bench)
-        model = np.ma.masked_where(mask==0, model)
+        bench = np.ma.masked_where(mask==255, bench)
+        model = np.ma.masked_where(mask==255, model)
     if urban_masking:
         bench = np.ma.masked_where(urban==0, bench)
         model = np.ma.masked_where(urban==0, model)
