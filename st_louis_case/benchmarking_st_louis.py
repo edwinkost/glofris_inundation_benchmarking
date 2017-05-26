@@ -155,7 +155,7 @@ def plot_contingency(x, y, contingency, title):
 
 # In[8]:
 
-def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
+def contingency_based_on_mask(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
 
     x, y, mask, fill_mask = gis.gdal_readmap(mask_fn, 'GTiff')
 
@@ -169,6 +169,49 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
 
     print('Warping {:s}'.format(urban_fn))
     gis.gdal_warp(urban_fn, mask_fn, 'urban.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, urban, fill_urban = gis.gdal_readmap('urban.tif', 'GTiff')
+
+    bench[bench==fill_bench] = 0.
+    # added by Edwin: Ignore areas/cells belonging to permanent water bodies
+    bench[model==fill_model] = 0.
+
+    model[model==fill_model] = 0.
+
+    if masking:
+        bench = np.ma.masked_where(mask==255, bench)
+        model = np.ma.masked_where(mask==255, model)
+    if urban_masking:
+        bench = np.ma.masked_where(urban==0, bench)
+        model = np.ma.masked_where(urban==0, model)
+        
+    flood1, flood2, cont_arr = contingency_map(bench, model, threshold1=bench_thres, threshold2=model_thres)
+    if masking:
+        cont_arr = np.ma.masked_where(mask==255, cont_arr)
+    if urban_masking:
+        cont_arr = np.ma.masked_where(urban==0, cont_arr)
+        
+    hr = hit_rate(flood1, flood2)
+    far = false_alarm_rate(flood1, flood2)
+    csi = critical_success(flood1, flood2)
+    return hr, far, csi, x, y, cont_arr, flood1, flood2
+
+
+def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
+
+    print('Warping {:s}'.format(bench_fn))
+    gis.gdal_warp(model_fn, bench_fn, 'bench.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, bench, fill_bench = gis.gdal_readmap("bench.tif", 'GTiff')
+
+    print('Warping {:s}'.format(model_fn))
+    gis.gdal_warp(model_fn, bench_fn, 'model.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, model, fill_model = gis.gdal_readmap('model.tif', 'GTiff')
+
+    print('Warping {:s}'.format(mask_fn))
+    gis.gdal_warp(mask_fn, bench_fn, 'mask.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, mask, fill_mask = gis.gdal_readmap("mask.tif", 'GTiff')
+
+    print('Warping {:s}'.format(urban_fn))
+    gis.gdal_warp(urban_fn, bench_fn, 'urban.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     x, y, urban, fill_urban = gis.gdal_readmap('urban.tif', 'GTiff')
 
     bench[bench==fill_bench] = 0.
