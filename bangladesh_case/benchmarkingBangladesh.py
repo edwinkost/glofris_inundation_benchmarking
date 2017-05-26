@@ -170,11 +170,12 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
 #     else:
 #         bench = np.ma.masked_where(bench==fill_bench, bench)
 #         model = np.ma.masked_where(model==fill_model, model)
-    bench[bench==fill_bench] = 0.
-    model[model==fill_model] = 0.
 
+    bench[bench==fill_bench] = 0.
     # added by Edwin: Ignore areas/cells belonging to permanent water bodies
     bench[model==fill_model] = 0.
+
+    model[model==fill_model] = 0.
 
     if masking:
         bench = np.ma.masked_where(mask==0, bench)
@@ -234,11 +235,11 @@ plt.savefig('Bangladesh.png', dpi=300, bbox_inches='tight')
 
 # In[66]:
 
-#~ hr, far, csi, x, y, cont_arr_mask, flood1, flood2 = contingency(bench_fn, model_fn, 0., 0., mask_fn, urban_fn, masking=True, urban_masking=True)
-#~ print('Scores WITH urban mask')
-#~ print('Hit rate: {:f}'.format(hr))
-#~ print('False Alarm rate: {:f}'.format(far))
-#~ print('Critical success index: {:f}'.format(csi))
+hr, far, csi, x, y, cont_arr_mask, flood1, flood2 = contingency(bench_fn, model_fn, 0., 0., mask_fn, urban_fn, masking=True, urban_masking=True)
+print('Scores WITH urban mask')
+print('Hit rate: {:f}'.format(hr))
+print('False Alarm rate: {:f}'.format(far))
+print('Critical success index: {:f}'.format(csi))
 
 
 # In[67]:
