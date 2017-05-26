@@ -235,18 +235,18 @@ plt.savefig('Bangladesh.png', dpi=300, bbox_inches='tight')
 
 # In[66]:
 
-hr, far, csi, x, y, cont_arr_mask, flood1, flood2 = contingency(bench_fn, model_fn, 0., 0., mask_fn, urban_fn, masking=True, urban_masking=True)
-print('Scores WITH urban mask')
-print('Hit rate: {:f}'.format(hr))
-print('False Alarm rate: {:f}'.format(far))
-print('Critical success index: {:f}'.format(csi))
+#~ hr, far, csi, x, y, cont_arr_mask, flood1, flood2 = contingency(bench_fn, model_fn, 0., 0., mask_fn, urban_fn, masking=True, urban_masking=True)
+#~ print('Scores WITH urban mask')
+#~ print('Hit rate: {:f}'.format(hr))
+#~ print('False Alarm rate: {:f}'.format(far))
+#~ print('Critical success index: {:f}'.format(csi))
 
 
 # In[67]:
 
-xmin, xmax, ymin, ymax = [850, 1450, 250, 700]
-plot_contingency(x[xmin:xmax], y[ymin:ymax], np.flipud(cont_arr_mask[ymin:ymax, xmin:xmax]), 'Bangladesh')
-plt.savefig('Bangladesh_mask_urben.png', dpi=300, bbox_inches='tight')
+#~ xmin, xmax, ymin, ymax = [850, 1450, 250, 700]
+#~ plot_contingency(x[xmin:xmax], y[ymin:ymax], np.flipud(cont_arr_mask[ymin:ymax, xmin:xmax]), 'Bangladesh')
+#~ plt.savefig('Bangladesh_mask_urben.png', dpi=300, bbox_inches='tight')
 
 
 # In[64]:
@@ -268,6 +268,3 @@ plt.colorbar()
 
 
 # In[ ]:
-
-
-
