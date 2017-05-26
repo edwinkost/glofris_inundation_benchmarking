@@ -186,7 +186,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
         
     flood1, flood2, cont_arr = contingency_map(bench, model, threshold1=bench_thres, threshold2=model_thres)
     if masking:
-        cont_arr = np.ma.masked_where(mask==0, cont_arr)
+        cont_arr = np.ma.masked_where(mask==255, cont_arr)
     if urban_masking:
         cont_arr = np.ma.masked_where(urban==0, cont_arr)
         
