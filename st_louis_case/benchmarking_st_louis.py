@@ -160,7 +160,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
     print('Warping {:s}'.format(mask_fn))
     print('Warping {:s}'.format(model_fn))
     print('Warping {:s}'.format(urban_fn))
-    gis.gdal_warp(mask_fn, bench_fn, 'temp1.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    gis.gdal_warp(mask_fn , bench_fn, 'temp1.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     gis.gdal_warp(model_fn, bench_fn, 'temp2.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     gis.gdal_warp(urban_fn, bench_fn, 'temp3.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     x, y, bench, fill_bench = gis.gdal_readmap(bench_fn, 'GTiff')
@@ -213,7 +213,7 @@ mask_fn  = "input_data/mask_st_louis.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\p
 urban_fn      = mask_fn # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
 model_warp_fn = None    # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
-hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0.1, mask_fn, urban_fn, masking=True)
+hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0.0, mask_fn, urban_fn, masking=True)
 
 
 # In[10]:
