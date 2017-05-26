@@ -204,7 +204,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
 model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6_not_sure/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\stlouis_rp100.tif'
 
 # reference
-bench_fn = "input_data/inun_stlouis2.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\inun_stlouis2.tif'
+bench_fn = "input_data/inun_stlouis1.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\inun_stlouis2.tif'
 
 # mask/focus area
 mask_fn  = "input_data/mask_st_louis.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\mask_st_louis.tif'
@@ -213,7 +213,7 @@ mask_fn  = "input_data/mask_st_louis.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\p
 urban_fn      = mask_fn # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
 model_warp_fn = None    # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
-hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0.1, mask_fn, urban_fn, masking=True)
+hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0.0, mask_fn, urban_fn, masking=True)
 
 
 # In[10]:
