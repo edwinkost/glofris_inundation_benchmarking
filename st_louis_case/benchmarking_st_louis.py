@@ -204,7 +204,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
 model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6_not_sure/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\stlouis_rp100.tif'
 
 # reference
-bench_fn = "input_data/inun_stlouis1.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\inun_stlouis2.tif'
+bench_fn = "input_data/inun_stlouis2.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\inun_stlouis2.tif'
 
 # mask/focus area
 mask_fn  = "input_data/mask_st_louis.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\mask_st_louis.tif'
