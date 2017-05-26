@@ -208,7 +208,7 @@ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order
 bench_fn = "input_data/inun_stlouis2.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\inun_stlouis2.tif'
 
 # mask/focus area
-mask_fn = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\mask_st_louis.tif'
+mask_fn  = "input_data/mask_st_louis.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\mask_st_louis.tif'
 
 # The following is not used:
 urban_fn      = mask_fn # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
