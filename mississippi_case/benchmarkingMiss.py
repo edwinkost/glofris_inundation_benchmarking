@@ -264,8 +264,8 @@ print('Critical success index: {:f}'.format(csi))
 
 # In[48]:
 
-plot_contingency(x, y, np.flipud(cont_arr), 'Flint')
-plt.savefig('Flint.png', dpi=300, bbox_inches='tight')
+plot_contingency(x, y, np.flipud(cont_arr), 'Miss')
+plt.savefig('Miss.png', dpi=300, bbox_inches='tight')
 
 
 #~ # In[42]:
