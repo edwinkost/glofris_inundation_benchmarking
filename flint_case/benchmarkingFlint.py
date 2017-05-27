@@ -231,7 +231,7 @@ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order
 bench_fn = "input_data/flint_1in100.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_1in100.tif'
 
 # mask/focus area
-mask_fn  = "input_data/mask_flint_30arcsec.tif"   # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\mask_flint.tif'
+mask_fn  = "input_data/mask_flint.tif"   # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\mask_flint.tif'
 
 # The following is not used:
 urban_fn      = mask_fn 
