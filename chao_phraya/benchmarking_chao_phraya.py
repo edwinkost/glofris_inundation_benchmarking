@@ -284,8 +284,8 @@ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order
 
 bench_fn = "input_data/inun_bangkok.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Bangkok\inun_bangkok.tif'
 
-mask_fn  = "input_data/mask_bangkok.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Bangkok\mask_bangkok_chaophraya.tif'
-#~ mask_fn  = "input_data/mask_bangkok_chaophraya.tif" 
+#~ mask_fn  = "input_data/mask_bangkok.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Bangkok\mask_bangkok_chaophraya.tif'
+mask_fn  = "input_data/mask_bangkok_chaophraya.tif" 
 
 urban_fn      = mask_fn # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
