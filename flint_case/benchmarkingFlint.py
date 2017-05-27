@@ -234,6 +234,7 @@ bench_fn = "input_data/flint_1in100.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\pa
 mask_fn  = "input_data/mask_flint_30arcsec.tif"   # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\mask_flint.tif'
 
 # The following is not used:
+urban_fn      = mask_fn 
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
 title = "Flint"
