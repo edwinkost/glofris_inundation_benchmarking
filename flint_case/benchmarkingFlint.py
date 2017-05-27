@@ -183,22 +183,22 @@ def contingency_default(bench_fn, model_fn, bench_thres, model_thres, mask_fn, t
     csi = critical_success(flood1, flood2)
     return hr, far, csi, x, y, cont_arr, flood1, flood2
 
-def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, masking=False):
+def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, masking=False, clone_map=None):
 
     print('Warping {:s}'.format(bench_fn))
-    gis.gdal_warp(bench_fn, mask_fn, 'bench.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    gis.gdal_warp(bench_fn, clone_map, 'bench.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     x, y, bench, fill_bench = gis.gdal_readmap("bench.tif", 'GTiff')
 
     print('Warping {:s}'.format(model_fn))
-    gis.gdal_warp(model_fn, mask_fn, 'model.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    gis.gdal_warp(model_fn, clone_map, 'model.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     x, y, model, fill_model = gis.gdal_readmap('model.tif', 'GTiff')
 
     print('Warping {:s}'.format(mask_fn))
-    gis.gdal_warp(mask_fn, mask_fn, 'mask.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    gis.gdal_warp(mask_fn, clone_map, 'mask.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     x, y, mask, fill_mask = gis.gdal_readmap("mask.tif", 'GTiff')
 
     print('Warping {:s}'.format(urban_fn))
-    gis.gdal_warp(urban_fn, mask_fn, 'urban.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    gis.gdal_warp(urban_fn, clone_map, 'urban.tif', gdal_interp=gdal.GRA_NearestNeighbour)
     x, y, urban, fill_urban = gis.gdal_readmap('urban.tif', 'GTiff')
 
     bench[bench==fill_bench] = 0.
@@ -225,7 +225,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 # In[44]:
 
 # glofris downscaling output
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_8/global/maps/inun_100-year_of_channel_storage_catch_08.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_rp100.tif'
+model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_4/global/maps/inun_100-year_of_channel_storage_catch_04.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_rp100.tif'
 
 # reference dataset
 bench_fn = "input_data/flint_1in100.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_1in100.tif'
@@ -233,12 +233,15 @@ bench_fn = "input_data/flint_1in100.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\pa
 # mask/focus area
 mask_fn  = "input_data/mask_flint.tif"   # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\mask_flint.tif'
 
+# clone map
+clone_map = "input_data/flint_rp100.tif"
+
 # The following is not used:
 urban_fn      = mask_fn 
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
 title = "Flint"
-hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.25, 0., mask_fn, title, masking = True)
+hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.25, 0., mask_fn, title, masking = True, clone_map)
 
 
 # In[45]:
