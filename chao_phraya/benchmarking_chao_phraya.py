@@ -281,12 +281,12 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
 # glofris downscaling output
 model_fn = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Bangkok\bangkok_rp25.tif'
 #~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_25-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_5/global/maps/inun_25-year_of_channel_storage_catch_05.tif.map.masked_out.map"
 
 bench_fn = "input_data/inun_bangkok.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Bangkok\inun_bangkok.tif'
 
-mask_fn  = "input_data/mask_bangkok.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Bangkok\mask_bangkok_chaophraya.tif'
-#~ mask_fn  = "input_data/mask_bangkok_chaophraya.tif" 
+#~ mask_fn  = "input_data/mask_bangkok.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Bangkok\mask_bangkok_chaophraya.tif'
+mask_fn  = "input_data/mask_bangkok_chaophraya.tif" 
 
 urban_fn      = mask_fn # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
