@@ -156,8 +156,9 @@ def plot_contingency(x, y, contingency, title):
 
 def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, masking=False):
     gis.gdal_warp(mask_fn, bench_fn, 'temp1.tif')
+    gis.gdal_warp(model_fn, bench_fn, 'temp2.tif')
     x, y, bench, fill_bench = gis.gdal_readmap(bench_fn, 'GTiff')
-    x, y, model, fill_model = gis.gdal_readmap(model_fn, 'GTiff')
+    x, y, model, fill_model = gis.gdal_readmap('temp2.tif', 'GTiff')
     x, y, mask, fill_mask = gis.gdal_readmap('temp1.tif', 'GTiff')
     if masking:
         bench = np.ma.masked_where(np.logical_or(bench==fill_bench, mask==0), bench)
