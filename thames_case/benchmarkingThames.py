@@ -219,7 +219,7 @@ model_fn     = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Susqueh
 #~ model_fn  = "input_data/inun_susquehanna_100.tif"
 model_fn     = r'd:\OneDrive\IVM\2017\paper_costs\benchmarks\Thames\inun_dynRout_thames_masked.tif'
 model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_1/global/maps/inun_100-year_of_channel_storage_catch_01.tif.map.masked_out.map"
-model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_5/global/maps/inun_100-year_of_channel_storage_catch_05.tif.map.masked_out.map"
+model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_4/global/maps/inun_100-year_of_channel_storage_catch_04.tif.map.masked_out.map"
 #~ model_fn     = "input_data/inun_dynRout_thames_masked.cropped.tif"
 
 
