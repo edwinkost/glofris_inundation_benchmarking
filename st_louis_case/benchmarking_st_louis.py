@@ -150,7 +150,7 @@ def plot_contingency(x, y, contingency, title):
 
     cbar.ax.set_xticklabels(['Global only', 'Local only', 'Both'])
     fig.suptitle(title, fontsize=14)
-    fig.savefig('{:s}.png'.format(title), bbox_inches='tight', dpi=300)
+    #~ fig.savefig('{:s}.png'.format(title), bbox_inches='tight', dpi=300)
 
 
 # In[8]:
@@ -329,7 +329,7 @@ print('Critical success index: {:f}'.format(csi))
 #~ plt.savefig('Bangladesh.png', dpi=300, bbox_inches='tight')
 
 
-plot_contingency(x, y, np.flipud(cont_arr), 'St. Louis')
+plot_contingency(x, y, np.flipud(cont_arr), 'StLouis')
 plt.savefig('StLouis.png', dpi=300, bbox_inches='tight')
 #~ plt.savefig('StLouis_alternative_facts.png', dpi=300, bbox_inches='tight')
 
