@@ -89,6 +89,8 @@ def false_alarm_rate(array1, array2):
     idx_2_only = np.sum(np.logical_and(array2, array1!=1))
     idx_2_total = np.sum(array2)
     
+    if float(idx_2_total) == 0.0: return -999.9
+    
     return float(idx_2_only)/float(idx_2_total)
 
 
