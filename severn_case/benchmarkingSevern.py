@@ -205,6 +205,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 
 model_fn = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Severn\inun_dynRout_severn_mask.tif'
 model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_9/global/maps/inun_100-year_of_channel_storage_catch_09.tif.map.masked_out.map"
+model_fn = "input_data/inun_dynRout_severn_mask.tif"
 
 bench_fn = "input_data/inun_local_severn_mask.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Severn\inun_local_severn_mask.tif'
 
