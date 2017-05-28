@@ -248,7 +248,8 @@ print('Critical success index: {:f}'.format(csi))
 # In[12]:
 
 #~ xmin, xmax, ymin, ymax = [2500, 5316, 4500, 5500]
-plot_contingency(x[xmin:xmax], y[ymin:ymax], np.flipud(cont_arr[ymin:ymax, xmin:xmax]), 'Thames')
+#~ plot_contingency(x[xmin:xmax], y[ymin:ymax], np.flipud(cont_arr[ymin:ymax, xmin:xmax]), 'Thames')
+plot_contingency(x, y, np.flipud(cont_arr), 'Thames')
 plt.savefig('Thames.png', dpi=300, bbox_inches='tight')
 
 
