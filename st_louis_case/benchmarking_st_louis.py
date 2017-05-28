@@ -196,7 +196,7 @@ def contingency_based_on_mask(bench_fn, model_fn, bench_thres, model_thres, mask
     return hr, far, csi, x, y, cont_arr, flood1, flood2
 
 
-def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
+def contingency_based_on_bench(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
 
     print('Warping {:s}'.format(bench_fn))
     gis.gdal_warp(bench_fn, bench_fn, 'bench.tif', gdal_interp=gdal.GRA_NearestNeighbour)
@@ -238,6 +238,43 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
     csi = critical_success(flood1, flood2)
     return hr, far, csi, x, y, cont_arr, flood1, flood2
 
+def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, masking=False, clone_map=None):
+
+    print('Warping {:s}'.format(bench_fn))
+    gis.gdal_warp(bench_fn, clone_map, 'bench.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, bench, fill_bench = gis.gdal_readmap("bench.tif", 'GTiff')
+
+    print('Warping {:s}'.format(model_fn))
+    gis.gdal_warp(model_fn, clone_map, 'model.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, model, fill_model = gis.gdal_readmap('model.tif', 'GTiff')
+
+    print('Warping {:s}'.format(mask_fn))
+    gis.gdal_warp(mask_fn, clone_map, 'mask.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, mask, fill_mask = gis.gdal_readmap("mask.tif", 'GTiff')
+
+    print('Warping {:s}'.format(urban_fn))
+    gis.gdal_warp(urban_fn, clone_map, 'urban.tif', gdal_interp=gdal.GRA_NearestNeighbour)
+    x, y, urban, fill_urban = gis.gdal_readmap('urban.tif', 'GTiff')
+
+    bench[bench==fill_bench] = 0.
+    # added by Edwin: Ignore areas/cells belonging to permanent water bodies
+    bench[model==fill_model] = 0.
+
+    model[model==fill_model] = 0.
+
+    if masking:
+        bench = np.ma.masked_where(mask==255, bench)
+        model = np.ma.masked_where(mask==255, model)
+        
+    flood1, flood2, cont_arr = contingency_map(bench, model, threshold1=bench_thres, threshold2=model_thres)
+    if masking:
+        cont_arr = np.ma.masked_where(mask==255, cont_arr)
+    
+    hr = hit_rate(flood1, flood2)
+    far = false_alarm_rate(flood1, flood2)
+    csi = critical_success(flood1, flood2)
+    return hr, far, csi, x, y, cont_arr, flood1, flood2
+
 
 # ## files and run
 
@@ -253,11 +290,17 @@ bench_fn = "input_data/inun_stlouis2.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\p
 # mask/focus area
 mask_fn  = "input_data/mask_st_louis.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\mask_st_louis.tif'
 
+# clone map
+clone_map = "input_data/stlouis_rp100.tif"
+
 # The following is not used:
 urban_fn      = mask_fn # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
 model_warp_fn = None    # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
-hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0.0, mask_fn, urban_fn, masking=True)
+title = "St. Louis"
+hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, title, masking = True, clone_map = clone_map)
+
+#~ hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0.0, mask_fn, urban_fn, masking=True)
 
 
 # In[10]:

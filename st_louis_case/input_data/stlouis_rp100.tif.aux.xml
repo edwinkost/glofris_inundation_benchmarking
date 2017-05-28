@@ -1,0 +1,25 @@
+<PAMDataset>
+  <Metadata>
+    <MDI key="DataType">Generic</MDI>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <Histograms>
+      <HistItem>
+        <HistMin>-0.4956896551724138</HistMin>
+        <HistMax>115.4956896551724</HistMax>
+        <BucketCount>116</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>15874|34|34|23|22|30|34|43|27|26|30|32|62|76|150|52|185|591|26|22|17|23|23|21|18|25|23|184|510|9|11|11|9|11|10|10|8|31|47|11|8|6|4|4|8|6|3|8|4|5|3|3|2|5|5|1|2|1|0|4|5|1|2|1|0|43|13|1|2|1|0|3|0|0|1|0|0|0|0|1|0|1|0|0|1|2|1|0|3|0|3|1|2|0|1|4|0|0|0|2|0|0|4|2|0|1|1|0|1|2|3|0|1|1|45|11</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="BandName">Band_1</MDI>
+      <MDI key="RepresentationType">THEMATIC</MDI>
+      <MDI key="STATISTICS_MAXIMUM">115</MDI>
+      <MDI key="STATISTICS_MEAN">3.6429108082001</MDI>
+      <MDI key="STATISTICS_MINIMUM">0</MDI>
+      <MDI key="STATISTICS_STDDEV">11.534116551039</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>
