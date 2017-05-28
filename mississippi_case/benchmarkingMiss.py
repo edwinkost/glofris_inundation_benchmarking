@@ -225,7 +225,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 # In[44]:
 
 # glofris downscaling output
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_9/global/maps/inun_100-year_of_channel_storage_catch_09.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_rp100.tif'
+model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_3/global/maps/inun_100-year_of_channel_storage_catch_03.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_rp100.tif'
 
 # reference dataset
 bench_fn = "input_data/mississippi_1in100.tif"  # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_1in100.tif'
@@ -240,7 +240,7 @@ clone_map = "input_data/mississippi_rp100.tif"
 urban_fn      = mask_fn 
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
-title = "Flint"
+title = "St. Paul, Mississippi"
 hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.25, 0., mask_fn, title, masking = True, clone_map = clone_map)
 
 
