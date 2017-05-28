@@ -178,11 +178,12 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 
 # In[9]:
 
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_5/global/maps/inun_100-year_of_channel_storage_catch_05.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_dynRout_Saxony_MASKED.tif'
 model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_5/global/maps/inun_100-year_of_channel_storage_catch_05.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_dynRout_Saxony_MASKED.tif'
 
 bench_fn = "input_data/inun_local_elbe_1km_MASKED.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_local_elbe_1km_MASKED.tif'
 
-mask_fn  = bench_fn # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
+mask_fn  = "input_data/mask.tif"                       # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
 
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, "Saxony")
