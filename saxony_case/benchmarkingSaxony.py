@@ -155,11 +155,12 @@ def plot_contingency(x, y, contingency, title):
 # In[8]:
 
 def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, masking=False):
-    gis.gdal_warp(mask_fn, bench_fn, 'temp1.tif')
-    gis.gdal_warp(model_fn, bench_fn, 'temp2.tif')
+    gis.gdal_warp(mask_fn, bench_fn, 'mask.tif')
+    gis.gdal_warp(model_fn, bench_fn, 'model.tif')
+    gis.gdal_warp(bench_fn, bench_fn, 'bench.tif')
     x, y, bench, fill_bench = gis.gdal_readmap(bench_fn, 'GTiff')
-    x, y, model, fill_model = gis.gdal_readmap('temp2.tif', 'GTiff')
-    x, y, mask, fill_mask = gis.gdal_readmap('temp1.tif', 'GTiff')
+    x, y, model, fill_model = gis.gdal_readmap('model.tif', 'GTiff')
+    x, y, mask, fill_mask = gis.gdal_readmap('mask.tif', 'GTiff')
     if masking:
         bench = np.ma.masked_where(np.logical_or(bench==fill_bench, mask==0), bench)
         model = np.ma.masked_where(np.logical_or(model==fill_model, mask==0), model)
@@ -171,6 +172,11 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
     hr = hit_rate(flood1, flood2)
     far = false_alarm_rate(flood1, flood2)
     csi = critical_success(flood1, flood2)
+
+    gis.gdal_warp(mask_fn, bench_fn, 'mask.tif')
+    gis.gdal_warp(model_fn, bench_fn, 'model.tif')
+    gis.gdal_warp(bench_fn, bench_fn, 'bench.tif')
+
     return hr, far, csi, x, y, cont_arr
 
 
