@@ -202,8 +202,8 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
     x, y, urban, fill_urban = gis.gdal_readmap('urban.tif', 'GTiff')
 
     bench[bench==fill_bench] = 0.
-    # added by Edwin: Ignore areas/cells belonging to permanent water bodies
-    bench[model==fill_model] = 0.
+    #~ # added by Edwin: Ignore areas/cells belonging to permanent water bodies
+    #~ bench[model==fill_model] = 0.
 
     model[model==fill_model] = 0.
 
