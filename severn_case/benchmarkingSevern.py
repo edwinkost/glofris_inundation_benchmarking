@@ -16,7 +16,7 @@
 
 # In[1]:
 
-get_ipython().magic(u'pylab inline')
+#~ get_ipython().magic(u'pylab inline')
 import numpy as np
 from hydrotools import gis
 import gdal
