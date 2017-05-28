@@ -174,8 +174,8 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
     csi = critical_success(flood1, flood2)
 
     gis.gdal_warp(mask_fn, bench_fn, 'mask.tif')
-    gis.gdal_warp(model_fn, bench_fn, 'model.tif')
-    gis.gdal_warp(bench_fn, bench_fn, 'bench.tif')
+    gis.gdal_warp(model, bench_fn, 'model.tif')
+    gis.gdal_warp(bench, bench_fn, 'bench.tif')
 
     return hr, far, csi, x, y, cont_arr
 
