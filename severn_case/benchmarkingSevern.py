@@ -212,7 +212,7 @@ mask_fn  = "input_data/mask.tif"                   # r'c:\Users\hcwin\OneDrive\I
 
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 title = "Severn"
-hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, title)
+hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, title, masking = True)
 
 
 # In[14]:
@@ -229,99 +229,99 @@ plot_contingency(x, y, np.flipud(cont_arr), 'Severn')
 plt.savefig('Severn.png', dpi=300, bbox_inches='tight')
 
 
-# In[16]:
-
-hr, far, csi, x, y, contingency = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, title, masking=True)
-print('Scores WITH urban mask')
-print('Hit rate: {:f}'.format(hr))
-print('False Alarm rate: {:f}'.format(far))
-print('Critical success index: {:f}'.format(csi))
-
-
-# In[33]:
-
-plot_contingency(x, y, np.flipud(contingency), 'Severn')
-plt.savefig('Severn_mask_urben.png', dpi=300, bbox_inches='tight')
-
-
-# In[114]:
-
-x, y, model_warp, fill = gis.gdal_readmap(model_warp_fn, 'GTiff')
-# TODO: read other rasters and mask
-# for now, change values slightly by adding a random grid between -2.5 dm and 2.5 dm
-model_warp = np.ma.masked_where(model_warp==fill, model_warp)
-change_grid = np.random.rand(model_warp.shape[0], model_warp.shape[1])*5.-2.5
-
-benchmark_warp = model_warp + change_grid
-
-
-# In[50]:
-
-imshow(cont_arr)
-
-
-# In[116]:
-
-np.random.rand(5, 10)
-
-
-# In[117]:
-
-flood1, flood2, contingency = contingency_map(benchmark_warp, model_warp, threshold1=1., threshold2=1.)
-
-
-# In[158]:
-
-import cartopy.crs as ccrs
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
-import cartopy
-title = 'Ethiopia benchmark'
-plot_image = np.ma.masked_where(contingency==0, contingency)
-extent = (x.min(), x.max(), y.min(), y.max())
-cmap = colors.ListedColormap(['blue', 'red', 'green'])
-bounds=[0.5, 1.5, 2.5, 3.5]
-norm = colors.BoundaryNorm(bounds, cmap.N)
-
-fig =plt.figure(figsize=(10,10))
-ax = fig.add_subplot(111, axisbg='None', projection=ccrs.PlateCarree())
-ax.background_patch.set_fill(False)
-# get hold of the coastlines for that area.
-gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,
-                  linewidth=2, color='gray', alpha=0.5, linestyle='--')
-ax.add_feature(cartopy.feature.LAND, zorder=1)
-ax.add_feature(cartopy.feature.OCEAN, zorder=1)
-ax.add_feature(cartopy.feature.COASTLINE)
-ax.add_feature(cartopy.feature.BORDERS, linestyle=':')
-ax.add_feature(cartopy.feature.LAKES, alpha=0.5)
-ax.add_feature(cartopy.feature.RIVERS)
-ax.set_extent(extent)
-img = ax.imshow(plot_image, extent=extent, vmin=1., vmax=3., interpolation='nearest', 
-                    cmap=cmap, norm=norm, zorder=3)  # origin='lower',
-ax.set_xlabel('longitude')
-ax.set_ylabel('latitude')
-
-
-# make a color bar
-cbar = plt.colorbar(img, cmap=cmap, norm=norm, boundaries=bounds, ticks=[1, 2, 3], orientation='horizontal')
-
-cbar.ax.set_xticklabels(['Global only', 'Local only', 'Both'])
-fig.suptitle(title)
-fig.savefig('{:s}.png'.format(title), bbox_inches='tight', dpi=300)
-
-
-# In[147]:
-
-hr = hit_rate(flood1, flood2)
-far = false_alarm_rate(flood1, flood2)
-csi = critical_success(flood1, flood2)
-
-
-# In[148]:
-
-print hr, far, csi
-
-
-# In[ ]:
-
-
-
+#~ # In[16]:
+#~ 
+#~ hr, far, csi, x, y, contingency = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, title, masking=True)
+#~ print('Scores WITH urban mask')
+#~ print('Hit rate: {:f}'.format(hr))
+#~ print('False Alarm rate: {:f}'.format(far))
+#~ print('Critical success index: {:f}'.format(csi))
+#~ 
+#~ 
+#~ # In[33]:
+#~ 
+#~ plot_contingency(x, y, np.flipud(contingency), 'Severn')
+#~ plt.savefig('Severn_mask_urben.png', dpi=300, bbox_inches='tight')
+#~ 
+#~ 
+#~ # In[114]:
+#~ 
+#~ x, y, model_warp, fill = gis.gdal_readmap(model_warp_fn, 'GTiff')
+#~ # TODO: read other rasters and mask
+#~ # for now, change values slightly by adding a random grid between -2.5 dm and 2.5 dm
+#~ model_warp = np.ma.masked_where(model_warp==fill, model_warp)
+#~ change_grid = np.random.rand(model_warp.shape[0], model_warp.shape[1])*5.-2.5
+#~ 
+#~ benchmark_warp = model_warp + change_grid
+#~ 
+#~ 
+#~ # In[50]:
+#~ 
+#~ imshow(cont_arr)
+#~ 
+#~ 
+#~ # In[116]:
+#~ 
+#~ np.random.rand(5, 10)
+#~ 
+#~ 
+#~ # In[117]:
+#~ 
+#~ flood1, flood2, contingency = contingency_map(benchmark_warp, model_warp, threshold1=1., threshold2=1.)
+#~ 
+#~ 
+#~ # In[158]:
+#~ 
+#~ import cartopy.crs as ccrs
+#~ from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
+#~ import cartopy
+#~ title = 'Ethiopia benchmark'
+#~ plot_image = np.ma.masked_where(contingency==0, contingency)
+#~ extent = (x.min(), x.max(), y.min(), y.max())
+#~ cmap = colors.ListedColormap(['blue', 'red', 'green'])
+#~ bounds=[0.5, 1.5, 2.5, 3.5]
+#~ norm = colors.BoundaryNorm(bounds, cmap.N)
+#~ 
+#~ fig =plt.figure(figsize=(10,10))
+#~ ax = fig.add_subplot(111, axisbg='None', projection=ccrs.PlateCarree())
+#~ ax.background_patch.set_fill(False)
+#~ # get hold of the coastlines for that area.
+#~ gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,
+                  #~ linewidth=2, color='gray', alpha=0.5, linestyle='--')
+#~ ax.add_feature(cartopy.feature.LAND, zorder=1)
+#~ ax.add_feature(cartopy.feature.OCEAN, zorder=1)
+#~ ax.add_feature(cartopy.feature.COASTLINE)
+#~ ax.add_feature(cartopy.feature.BORDERS, linestyle=':')
+#~ ax.add_feature(cartopy.feature.LAKES, alpha=0.5)
+#~ ax.add_feature(cartopy.feature.RIVERS)
+#~ ax.set_extent(extent)
+#~ img = ax.imshow(plot_image, extent=extent, vmin=1., vmax=3., interpolation='nearest', 
+                    #~ cmap=cmap, norm=norm, zorder=3)  # origin='lower',
+#~ ax.set_xlabel('longitude')
+#~ ax.set_ylabel('latitude')
+#~ 
+#~ 
+#~ # make a color bar
+#~ cbar = plt.colorbar(img, cmap=cmap, norm=norm, boundaries=bounds, ticks=[1, 2, 3], orientation='horizontal')
+#~ 
+#~ cbar.ax.set_xticklabels(['Global only', 'Local only', 'Both'])
+#~ fig.suptitle(title)
+#~ fig.savefig('{:s}.png'.format(title), bbox_inches='tight', dpi=300)
+#~ 
+#~ 
+#~ # In[147]:
+#~ 
+#~ hr = hit_rate(flood1, flood2)
+#~ far = false_alarm_rate(flood1, flood2)
+#~ csi = critical_success(flood1, flood2)
+#~ 
+#~ 
+#~ # In[148]:
+#~ 
+#~ print hr, far, csi
+#~ 
+#~ 
+#~ # In[ ]:
+#~ 
+#~ 
+#~ 
