@@ -202,7 +202,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
         
     flood1, flood2, cont_arr = contingency_map(bench, model, threshold1=bench_thres, threshold2=model_thres)
     if masking:
-        cont_arr = np.ma.masked_where(mask==255, cont_arr)
+        cont_arr = np.ma.masked_where(mask==0, cont_arr)
     
     hr = hit_rate(flood1, flood2)
     far = false_alarm_rate(flood1, flood2)
@@ -225,7 +225,7 @@ model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_o
 
 bench_fn     = "input_data/inun_local_Thames_90m_mask.tif" # r'd:\OneDrive\IVM\2017\paper_costs\benchmarks\Thames\inun_local_thames_masked.tif'
 
-mask_fn      = "input_data/mask.used.tif" # r'd:\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
+mask_fn      = "input_data/mask.tif" # r'd:\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
 clone_map    = mask_fn
 urban_fn     = mask_fn
 
