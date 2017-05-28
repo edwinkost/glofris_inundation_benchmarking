@@ -227,7 +227,7 @@ bench_fn     = "input_data/inun_local_Thames_90m_mask.tif" # r'd:\OneDrive\IVM\2
 
 mask_fn      = "input_data/mask.used.tif" # r'd:\OneDrive\IVM\2017\paper_costs\urban_2010\landuse_1_base_2010.tif'
 clone_map    = mask_fn
-
+urban_fn     = mask_fn
 
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
