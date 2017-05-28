@@ -187,7 +187,7 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 # In[9]:
 
 #~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_5/global/maps/inun_100-year_of_channel_storage_catch_05.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_dynRout_Saxony_MASKED.tif'
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_3/global/maps/inun_100-year_of_channel_storage_catch_03.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_dynRout_Saxony_MASKED.tif'
+model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_7/global/maps/inun_100-year_of_channel_storage_catch_07.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_dynRout_Saxony_MASKED.tif'
 
 bench_fn = "input_data/inun_local_elbe_1km_MASKED.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_local_elbe_1km_MASKED.tif'
 
