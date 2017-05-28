@@ -236,6 +236,8 @@ mask_fn   = "input_data/mask_susquehanna.tif"
 
 clone_map = "input_data/inun_susquehanna_100.tif"
 
+urban_fn = mask_fn
+
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
 title = "Susquehanna"
