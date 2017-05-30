@@ -294,7 +294,7 @@ model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark
 
 
 #~ hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, urban_fn, masking=True)
-hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0.1, mask_fn, urban_fn, masking=True)
+hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0.05, mask_fn, urban_fn, masking=True)
 
 
 # In[34]:
