@@ -213,7 +213,9 @@ mask_fn  = "input_data/mask.tif"                   # r'c:\Users\hcwin\OneDrive\I
 
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 title = "Severn"
-hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, title, masking = True)
+
+#~ hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, title, masking = True)
+hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.5, 0.1, mask_fn, title, masking = True)
 
 
 # In[14]:
