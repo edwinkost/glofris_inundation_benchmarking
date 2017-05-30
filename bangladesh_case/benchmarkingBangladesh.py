@@ -257,8 +257,6 @@ model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark
 
 
 hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn = bench_fn, model_fn = model_fn, bench_thres = 0., model_thres = 0.0, mask_fn = mask_fn, urban_fn = urban_fn, masking=True)
-hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn = bench_fn, model_fn = model_fn, bench_thres = 0., model_thres = 0.046, mask_fn = mask_fn, urban_fn = urban_fn, masking=True)
-
 
 # def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn, masking=False, urban_masking=False):
 
