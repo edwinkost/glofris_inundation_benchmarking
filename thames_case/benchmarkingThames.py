@@ -233,6 +233,7 @@ model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark
 
 title = "Thames"
 hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.0, 0., mask_fn, title, masking = True, clone_map = clone_map)
+hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.0, 0.1, mask_fn, title, masking = True, clone_map = clone_map)
 
 #~ hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.0, 0., mask_fn, title,)
 
