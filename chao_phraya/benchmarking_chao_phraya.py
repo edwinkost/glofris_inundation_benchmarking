@@ -293,8 +293,7 @@ urban_fn      = mask_fn # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\urban_2
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
 
-#~ hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, urban_fn, masking=True)
-hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0.046, mask_fn, urban_fn, masking=True)
+hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, urban_fn, masking=True)
 
 
 # In[34]:

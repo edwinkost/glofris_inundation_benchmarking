@@ -198,8 +198,7 @@ mask_fn  = "input_data/mask.tif"                       # r'c:\Users\hcwin\OneDri
 
 model_warp_fn = None # r'c:\Users\hcwin\OneDrive\projects\1209884_GFRA\benchmark\inun_dynRout_RP_00100_warp.tif'
 
-#~ hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, "Saxony", masking = True)
-hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.5, 0.1, mask_fn, "Saxony", masking = True)
+hr, far, csi, x, y, cont_arr = contingency(bench_fn, model_fn, 0.5, 0., mask_fn, "Saxony", masking = True)
 
 
 # In[10]:
