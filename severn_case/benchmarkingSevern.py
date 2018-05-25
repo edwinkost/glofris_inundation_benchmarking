@@ -203,9 +203,12 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 
 # In[13]:
 
-model_fn = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Severn\inun_dynRout_severn_mask.tif'
-model_fn = "input_data/inun_dynRout_severn_mask.tif"
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+#~ model_fn = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Severn\inun_dynRout_severn_mask.tif'
+#~ model_fn = "input_data/inun_dynRout_severn_mask.tif"
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+
+model_fn = "/scratch-shared/edwinhs/flood_analyzer_sorder_sensitivity_analysis_2018_05_XX/strahler_order_6/historical/1960-1999/WATCH/inundation_30sec/merged/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+
 
 bench_fn = "input_data/inun_local_severn_mask.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Severn\inun_local_severn_mask.tif'
 
@@ -228,7 +231,7 @@ print('Critical success index: {:f}'.format(csi))
 # In[19]:
 
 plot_contingency(x, y, np.flipud(cont_arr), 'Severn')
-plt.savefig('Severn.png', dpi=300, bbox_inches='tight')
+#~ plt.savefig('Severn.png', dpi=300, bbox_inches='tight')
 
 
 #~ # In[16]:

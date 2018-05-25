@@ -227,10 +227,13 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 # In[65]:
 
 # glofris downscaling output
-model_fn     = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Susquehanna\inun_susquehanna_100.tif'
-#~ model_fn  = "input_data/inun_susquehanna_100.tif"
-model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_1/global/maps/inun_100-year_of_channel_storage_catch_01.tif.map.masked_out.map"
-model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+#~ model_fn     = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Susquehanna\inun_susquehanna_100.tif'
+#~ model_fn     = "input_data/inun_susquehanna_100.tif"
+#~ model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_1/global/maps/inun_100-year_of_channel_storage_catch_01.tif.map.masked_out.map"
+#~ model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+
+model_fn = "/scratch-shared/edwinhs/flood_analyzer_sorder_sensitivity_analysis_2018_05_XX/strahler_order_6/historical/1960-1999/WATCH/inundation_30sec/merged/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+
 
 bench_fn  = "input_data/susquehanna_1in100.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Susquehanna\susquehanna_1in100.tif'
 
@@ -254,13 +257,13 @@ hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0
 
 # In[66]:
 
-plt.figure(figsize=(12, 12))
-plt.imshow(cont_arr)
+#~ plt.figure(figsize=(12, 12))
+#~ plt.imshow(cont_arr)
 
 
 # In[67]:
 
-flood2.shape
+#~ flood2.shape
 
 
 # In[68]:
@@ -274,7 +277,7 @@ print('Critical success index: {:f}'.format(csi))
 # In[69]:
 
 plot_contingency(x, y, np.flipud(cont_arr), 'Susquehanna')
-plt.savefig('Susquehanna.png', dpi=300, bbox_inches='tight')
+#~ plt.savefig('Susquehanna.png', dpi=300, bbox_inches='tight')
 
 
 #~ # In[27]:

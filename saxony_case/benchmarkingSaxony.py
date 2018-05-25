@@ -189,8 +189,11 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 # In[9]:
 
 #~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_5/global/maps/inun_100-year_of_channel_storage_catch_05.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_dynRout_Saxony_MASKED.tif'
-model_fn = "input_data/inun_dynRout_Saxony_MASKED.tif"
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_dynRout_Saxony_MASKED.tif'
+#~ model_fn = "input_data/inun_dynRout_Saxony_MASKED.tif"
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_dynRout_Saxony_MASKED.tif'
+
+model_fn = "/scratch-shared/edwinhs/flood_analyzer_sorder_sensitivity_analysis_2018_05_XX/strahler_order_6/historical/1960-1999/WATCH/inundation_30sec/merged/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+
 
 bench_fn = "input_data/inun_local_elbe_1km_MASKED.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Saxony\inun_local_elbe_1km_MASKED.tif'
 
@@ -214,7 +217,7 @@ print('Critical success index: {:f}'.format(csi))
 xmin, xmax, ymin, ymax = [0, 200, 50, 170]
 plot_contingency(x[xmin:xmax], y[ymin:ymax], np.flipud(cont_arr[ymin:ymax, xmin:xmax]), 'Saxony')
 
-plt.savefig('Saxony.png', dpi=300, bbox_inches='tight')
+#~ plt.savefig('Saxony.png', dpi=300, bbox_inches='tight')
 
 
 #~ # In[15]:

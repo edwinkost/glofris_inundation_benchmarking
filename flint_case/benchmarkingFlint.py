@@ -226,7 +226,9 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 
 # glofris downscaling output
 #~ model_fn = "input_data/flint_rp100.tif"
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_rp100.tif'
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_rp100.tif'
+
+model_fn = "/scratch-shared/edwinhs/flood_analyzer_sorder_sensitivity_analysis_2018_05_XX/strahler_order_6/historical/1960-1999/WATCH/inundation_30sec/merged/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
 
 # reference dataset
 bench_fn = "input_data/flint_1in100.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\flint\flint_1in100.tif'
@@ -247,12 +249,12 @@ hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0
 
 # In[45]:
 
-plt.imshow(flood2)
+#~ plt.imshow(flood2)
 
 
 # In[46]:
 
-flood2.shape
+#~ flood2.shape
 
 
 # In[47]:
@@ -266,7 +268,7 @@ print('Critical success index: {:f}'.format(csi))
 # In[48]:
 
 plot_contingency(x, y, np.flipud(cont_arr), 'Flint')
-plt.savefig('Flint.png', dpi=300, bbox_inches='tight')
+#~ plt.savefig('Flint.png', dpi=300, bbox_inches='tight')
 
 
 #~ # In[42]:

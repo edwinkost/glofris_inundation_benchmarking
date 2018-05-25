@@ -240,10 +240,11 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, urban_fn,
 # In[70]:
 
 # glofris downscaling output
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6_not_sure/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\GLOFRIS\inun_dynRout_RP_00100.tif'
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_2/global/maps/inun_100-year_of_channel_storage_catch_02.tif.map.masked_out.map"
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_1/M17/output_folder/inun_100-year_of_channel_storage_catch_01/inun_100-year_of_channel_storage_catch_01.tif.map"
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6_not_sure/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\GLOFRIS\inun_dynRout_RP_00100.tif'
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_2/global/maps/inun_100-year_of_channel_storage_catch_02.tif.map.masked_out.map"
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_1/M17/output_folder/inun_100-year_of_channel_storage_catch_01/inun_100-year_of_channel_storage_catch_01.tif.map"
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+
 model_fn = "/scratch-shared/edwinhs/flood_analyzer_sorder_sensitivity_analysis_2018_05_XX/strahler_order_6/historical/1960-1999/WATCH/inundation_30sec/merged/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
 
 # reference
@@ -274,7 +275,8 @@ print('Critical success index: {:f}'.format(csi))
 
 xmin, xmax, ymin, ymax = [850, 1450, 250, 700]
 plot_contingency(x[xmin:xmax], y[ymin:ymax], np.flipud(cont_arr[ymin:ymax, xmin:xmax]), 'Bangladesh')
-plt.savefig('Bangladesh.png', dpi=300, bbox_inches='tight')
+
+#~ plt.savefig('Bangladesh.png', dpi=300, bbox_inches='tight')
 
 
 # In[66]:
