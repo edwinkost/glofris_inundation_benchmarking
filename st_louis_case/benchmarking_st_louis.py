@@ -281,9 +281,12 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 # In[9]:
 
 # glofris downscaling output
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6_not_sure/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\stlouis_rp100.tif'
-model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6_not_sure/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\stlouis_rp100.tif'
+#~ model_fn = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
 #~ model_fn = "input_data/stlouis_rp100.tif"
+
+model_fn = "/scratch-shared/edwinhs/flood_analyzer_sorder_sensitivity_analysis_2018_05_XX/strahler_order_6/historical/1960-1999/WATCH/inundation_30sec/merged/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+
 
 # reference
 bench_fn = "input_data/inun_stlouis2.tif" # r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\stlouis\inun_stlouis2.tif'
@@ -304,12 +307,12 @@ hr, far, csi, x, y, cont_arr, flood1, flood2 = contingency(bench_fn, model_fn, 0
 
 # In[10]:
 
-plt.imshow(flood2)
+#~ plt.imshow(flood2)
 
 
 # In[11]:
 
-flood2.shape
+#~ flood2.shape
 
 
 # In[12]:
@@ -328,8 +331,7 @@ print('Critical success index: {:f}'.format(csi))
 
 
 plot_contingency(x, y, np.flipud(cont_arr), 'StLouis')
-plt.savefig('StLouis.png', dpi=300, bbox_inches='tight')
-#~ plt.savefig('StLouis_alternative_facts.png', dpi=300, bbox_inches='tight')
+#~ plt.savefig('StLouis.png', dpi=300, bbox_inches='tight')
 
 
 # In[27]:

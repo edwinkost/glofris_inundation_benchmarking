@@ -215,13 +215,14 @@ def contingency(bench_fn, model_fn, bench_thres, model_thres, mask_fn, title, ma
 # In[10]:
 
 # glofris downscaling output
-model_fn     = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Susquehanna\inun_susquehanna_100.tif'
-#~ model_fn  = "input_data/inun_susquehanna_100.tif"
-model_fn     = r'd:\OneDrive\IVM\2017\paper_costs\benchmarks\Thames\inun_dynRout_thames_masked.tif'
-model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_1/global/maps/inun_100-year_of_channel_storage_catch_01.tif.map.masked_out.map"
-model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
+#~ model_fn     = r'c:\Users\hcwin\OneDrive\IVM\2017\paper_costs\benchmarks\Susquehanna\inun_susquehanna_100.tif'
+#~ model_fn     = "input_data/inun_susquehanna_100.tif"
+#~ model_fn     = r'd:\OneDrive\IVM\2017\paper_costs\benchmarks\Thames\inun_dynRout_thames_masked.tif'
+#~ model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_1/global/maps/inun_100-year_of_channel_storage_catch_01.tif.map.masked_out.map"
+#~ model_fn     = "/scratch-shared/edwinsut/finalizing_downscaling/using_strahler_order_6/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
 #~ model_fn     = "input_data/inun_dynRout_thames_masked.cropped.tif"
 
+model_fn = "/scratch-shared/edwinhs/flood_analyzer_sorder_sensitivity_analysis_2018_05_XX/strahler_order_6/historical/1960-1999/WATCH/inundation_30sec/merged/global/maps/inun_100-year_of_channel_storage_catch_06.tif.map.masked_out.map"
 
 bench_fn     = "input_data/inun_local_Thames_90m_mask.tif" # r'd:\OneDrive\IVM\2017\paper_costs\benchmarks\Thames\inun_local_thames_masked.tif'
 
@@ -250,7 +251,7 @@ print('Critical success index: {:f}'.format(csi))
 #~ xmin, xmax, ymin, ymax = [2500, 5316, 4500, 5500]
 #~ plot_contingency(x[xmin:xmax], y[ymin:ymax], np.flipud(cont_arr[ymin:ymax, xmin:xmax]), 'Thames')
 plot_contingency(x, y, np.flipud(cont_arr), 'Thames')
-plt.savefig('Thames.png', dpi=300, bbox_inches='tight')
+#~ plt.savefig('Thames.png', dpi=300, bbox_inches='tight')
 
 
 #~ # In[28]:
